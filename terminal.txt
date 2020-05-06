@@ -3,7 +3,7 @@ cd 2_Project1/
 touch terminal.txt
 
 git add -A #(update all files)
-git commit -m "Update 14h" #(submit changes)
+git commit -m "Update 15h" #(submit changes)
 git push #(upload changes)
 
 

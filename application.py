@@ -43,19 +43,19 @@ def home():
     return render_template("home.html",list_books=list_books)
 
 
-@app.route("/book")
-def book():
+@app.route("/book/<string:isbn>")
+def book(isbn):
+
+    """list details of books"""
+    # isbn = "0590554107"
+    details_books = Books.query.get(isbn)
 
     """get reviews from users"""
     text_review = request.form.get("review")
     
-    reviews_isbn = "0590554107"
-    list_reviews = Reviews.query.get(reviews_isbn)
+    # reviews_isbn = "0590554107"
+    list_reviews = Reviews.query.get(isbn)
 
-
-    """list details of books"""
-    isbn = "0590554107"
-    details_books = Books.query.get(isbn)
 
     """list reviews from Goodread"""
 
