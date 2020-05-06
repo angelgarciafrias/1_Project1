@@ -43,19 +43,23 @@ def home():
     return render_template("home.html",list_books=list_books)
 
 
-
 @app.route("/book")
 def book():
+
+    """get reviews from users"""
+    text_review = request.form.get("review")
+    
+    reviews_isbn = "0590554107"
+    list_reviews = Reviews.query.get(reviews_isbn)
+    list_reviews.add_review(text_review)
+
     """list details of books"""
     isbn = "0590554107"
     details_books = Books.query.get(isbn)
 
-    """list reviews from users"""
-
     """list reviews from Goodread"""
 
-
-    return render_template("book.html",details_books=details_books)
+    return render_template("book.html",details_books=details_books,list_reviews=list_reviews)
 
 @app.route("/api")
 def api():

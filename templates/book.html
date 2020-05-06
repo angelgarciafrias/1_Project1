@@ -22,8 +22,11 @@
     </table>
     <h3>Reviews from users</h3>
     <ul>
-        <li>Review 1</li>
-        <li>Review 2</li>
+        {% for review in list_reviews %}
+            <li>{{ review.text }} , from {{ review.reviews_username }}</li>
+        {% else %}
+            <li> No reviews.</li>
+        {% endfor %}
     </ul>
 
     <h3>External reviews (Goodread)</h3>
@@ -31,6 +34,13 @@
         <li>Review 1</li>
         <li>Review 2</li>
     </ul>
+
+    <h3>Submit your own review</h3>
+
+    <form>
+        <input type="text" name="review" placeholder="Enter your review here">
+        <button>Submit</button>
+    </form>
 
     <a href="{{ url_for('home') }}"> Home</a>
     <a href="{{ url_for('api') }}"> Generate API</a>

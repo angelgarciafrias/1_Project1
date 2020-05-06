@@ -11,17 +11,22 @@ class Books(db.Model):
     title = db.Column(db.String, nullable=False)
     author = db.Column(db.String, nullable=False)
     year = db.Column(db.Integer, nullable=False)
-    reviews = db.relationship("Reviews", backref="book", lazy=True)
+    books_review = db.relationship("Reviews", backref="book", lazy=True)
+
+    def add_review(self, text):
+        r = Reviews(text=text,reviews_isbn=self.isbn)
+        db.session.add(r)
+        db.session.commit()
 
 class Reviews(db.Model):
     __tablename__ = "reviews"
     id = db.Column(db.Integer, primary_key=True)
-    text_review = db.Column(db.String, nullable=False)
-    book_isbn = db.Column(db.String, db.ForeignKey("books.isbn"), nullable=False)
+    text = db.Column(db.String, nullable=False)
+    reviews_isbn = db.Column(db.String, db.ForeignKey("books.isbn"), nullable=False)
+    reviews_username = db.Column(db.String, db.ForeignKey("users.username"), nullable=False)
 
 class Users(db.Model):
     __tablename__ = "users"
-    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String, primary_key=True)
     email = db.Column(db.String, nullable=False)
-    username = db.Column(db.String, nullable=False)
     password = db.Column(db.String, nullable=False)
