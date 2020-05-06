@@ -7,10 +7,8 @@
 <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#example').dataTable({
-            "order": [[ 0, 'asc' ]]
-        });
-        $('#example').show();
+        $('#mytable').dataTable();
+        $('#mytable').show();
     } );
 </script>
 
@@ -24,7 +22,7 @@
 
 <div class="container">
 
-    <table class="dataTable" id="example" style="display:none" >
+    <table class="dataTable" id="mytable" style="display:none" >
       <thead>
         <tr>
             <th>ISBN</th> 
@@ -47,16 +45,5 @@
   </div>
 
     <a href="{{ url_for('index') }}"> Logout</a>
-
-    <script>
-        $(document).ready(function(){
-          $("#myInput").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $("#myTable tr").filter(function() {
-              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-          });
-        });
-        </script>
 
 {% endblock %}

@@ -51,7 +51,7 @@ def book():
     
     reviews_isbn = "0590554107"
     list_reviews = Reviews.query.get(reviews_isbn)
-    list_reviews.add_review(text_review)
+
 
     """list details of books"""
     isbn = "0590554107"

@@ -10,7 +10,6 @@
     <table>
         <tr>
             <th>ISBN</th> 
-            <th>Title</th>
             <th>Author</th>
             <th>Year</th>
         </tr>
@@ -22,13 +21,10 @@
     </table>
     <h3>Reviews from users</h3>
     <ul>
-        {% for review in list_reviews %}
-            <li>{{ review.text }} , from {{ review.reviews_username }}</li>
-        {% else %}
-            <li> No reviews.</li>
-        {% endfor %}
+        <li>Review 1</li>
+        <li>Review 2</li>
     </ul>
-
+    
     <h3>External reviews (Goodread)</h3>
     <ul>
         <li>Review 1</li>

@@ -13,11 +13,6 @@ class Books(db.Model):
     year = db.Column(db.Integer, nullable=False)
     books_review = db.relationship("Reviews", backref="book", lazy=True)
 
-    def add_review(self, text):
-        r = Reviews(text=text,reviews_isbn=self.isbn)
-        db.session.add(r)
-        db.session.commit()
-
 class Reviews(db.Model):
     __tablename__ = "reviews"
     id = db.Column(db.Integer, primary_key=True)
