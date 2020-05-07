@@ -1,10 +1,12 @@
 {% extends "layout.html" %}
 
 {% block heading %}
-{{ details_books.title }}
+<h1>{{ details_books.title }}</h1>
 {% endblock %}
 
 {% block body %}
+
+<button onclick="goBack()">Go Back</button>
 
     <h3>Relevant data</h3>
     <table>
@@ -41,5 +43,11 @@
     <a href="{{ url_for('home') }}"> Home</a>
     <a href="{{ url_for('api') }}"> Generate API</a>
     <a href="{{ url_for('index') }}"> Logout</a>
+
+    <script>
+        function goBack() {
+          window.history.back();
+        }
+    </script>
 
 {% endblock %}

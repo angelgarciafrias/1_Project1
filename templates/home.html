@@ -1,21 +1,7 @@
 {% extends "layout.html" %}
 
-{% block head %}
-<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables.css">
-<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/css/jquery.dataTables_themeroller.css">
-<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#mytable').dataTable();
-        $('#mytable').show();
-    } );
-</script>
-
-{% endblock %}
-
 {% block heading %}
-    Welcome  to our website!
+    <h1>Welcome  to our website!</h1>
 {% endblock %}
 
 {% block body %}
@@ -36,7 +22,7 @@
             <tr>
                 <td>{{ book.isbn }}</td>
                 <td>
-                    <a href="{{ url_for('home', isbn=book.isbn) }}">
+                    <a href="{{ url_for('book', isbn=book.isbn) }}">
                         {{ book.title }}
                     </a>
                 </td>
