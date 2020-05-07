@@ -8,6 +8,8 @@
 
 <button onclick="goBack()">Go Back</button>
 
+    <h2>Hello, {{ current_user }}</h2>
+
     <h3>Relevant data</h3>
     <table>
         <tr>
@@ -23,20 +25,24 @@
     </table>
     <h3>Reviews from users</h3>
     <ul>
-        <li>Review 1</li>
-        <li>Review 2</li>
+        {% for review in list_reviews %}
+            <li> Rating: {{review.rating}}. Comment:{{ review.text }}. By: {{ review.reviews_username }} </li>
+        {% else %}
+            <p>No reviews for this book.</p>
+        {% endfor %}
     </ul>
     
     <h3>External reviews (Goodread)</h3>
     <ul>
-        <li>Review 1</li>
-        <li>Review 2</li>
+        <li> Review 1 </li>
+        <li> Review 2 </li>
     </ul>
 
     <h3>Submit your own review</h3>
 
-    <form>
-        <input type="text" name="review" placeholder="Enter your review here">
+    <form action="{{ url_for('book',isbn=details_books.isbn ) }}" method="POST">
+        <input type="text" name="comment" placeholder="Enter your review here">
+        <input type="number" name="rating" placeholder="Enter your rating here">
         <button>Submit</button>
     </form>
 
