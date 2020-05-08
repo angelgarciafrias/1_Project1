@@ -10,7 +10,13 @@
                 <h6>{{ message }}</h6>
         </div>
         <div class="centered">
-            <a href="{{ url_for('index') }}" class="btn btn-link"> Go back</a>
+            <button class="btn btn-info" onclick="goBack()"> Back to the book</button>
         </div>
     </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 {% endblock %}

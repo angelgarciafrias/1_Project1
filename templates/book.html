@@ -1,58 +1,84 @@
 {% extends "layout.html" %}
 
 {% block heading %}
-<h1>{{ details_books.title }}</h1>
+<h1>Hello {{ current_user }}!</h1>
 {% endblock %}
 
 {% block body %}
 
-<button onclick="goBack()">Go Back</button>
+<div class="container">
+    <button class="btn btn-info" onclick="goBack()"> Back to the list</button>
+    
+    <br>
+    <br>
+    <h3>Details of the book</h3>
+    <h5>{{ details_books.title }}</h5>
 
-    <h2>Hello, {{ current_user }}</h2>
-
-    <h3>Relevant data</h3>
     <table>
         <tr>
             <th>ISBN</th> 
             <th>Author</th>
             <th>Year</th>
+            <th>Reviews in Goodreads</th>
+            <th>Rating in Goodreads</th>
         </tr>
             <tr>
                 <td>{{ details_books.isbn }}</td>
                 <td>{{ details_books.author }}</td>
                 <td>{{ details_books.year }}</td>
+                <td>{{ reviews_count }}</td>
+                <td>{{ average_rating }}</td>
             </tr>
     </table>
-    <h3>Reviews from users</h3>
+
+    <br>
+    <br>
+
+    <h3>Reviews for this book</h3>
+
     <ul>
         {% for review in list_reviews %}
-            <li> Rating: {{review.rating}}. Comment:{{ review.text }}. By: {{ review.reviews_username }} </li>
+            <li>
+                By: {{ review.reviews_username }} (Rating: {{review.rating}}) <br>
+                {{ review.text }} <br>
+                <br>
+            </li>
         {% else %}
             <p>No reviews for this book.</p>
         {% endfor %}
-    </ul>
-    
-    <h3>External details from Goodread</h3>
-    <ul>
-        <li> Number of reviews: {{ reviews_count }} </li>
-        <li> Average rating: {{ average_rating }} </li>
     </ul>
 
     <h3>Submit your own review</h3>
 
     <form action="{{ url_for('book',isbn=details_books.isbn ) }}" method="POST">
-        <input type="text" name="comment" placeholder="Enter your review here">
-        <input type="number" name="rating" placeholder="Enter your rating here">
-        <button>Submit</button>
+        Rating:
+        1 <input type="radio" class="rating-input" name="rating" value="1">
+        2 <input type="radio" class="rating-input" name="rating" value="2">
+        3 <input type="radio" class="rating-input" name="rating" value="3">
+        4 <input type="radio" class="rating-input" name="rating" value="4">
+        5 <input type="radio" class="rating-input" name="rating" value="5">
+        
+        <br>
+
+        <div class="input-group">
+            <textarea class="form-control" aria-label="With textarea" name="comment" ></textarea>
+        </div>
+        
+        <br>
+
+        <button class="btn btn-success"> Submit review</button>
     </form>
 
-    <a href="{{ url_for('api') }}"> Generate API</a>
-    <a href="{{ url_for('index') }}"> Logout</a>
+</div>
 
-    <script>
-        function goBack() {
-          window.history.back();
-        }
-    </script>
+<div class="right">
+    <a href="{{ url_for('index') }}" class="btn btn-link"> Log out</a>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 
 {% endblock %}

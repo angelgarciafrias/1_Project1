@@ -27,13 +27,13 @@ def register():
     if request.method == "POST":
 
         """ensure data was submitted"""
-        if not (request.form.get("username") or request.form.get("password") or request.form.get("email")):
-            return render_template("error.html", message="You must provide all the information")
+        if not (request.form.get("username") and request.form.get("password") and request.form.get("email")):
+            return render_template("error2.html", message="You must provide all the information")
 
         """check if username is valid"""
         username_check = Users.query.get(request.form.get("username"))
         if username_check:
-            return render_template("error.html", message="Username already taken.")
+            return render_template("error2.html", message="Username already taken.")
 
         """add username and password to database"""
         u = Users(username=request.form.get("username"),email=request.form.get("email"))
@@ -55,7 +55,7 @@ def index():
         session.clear()
         """ensure data was submitted"""
         if not (request.form.get("username") or request.form.get("password")):
-            return render_template("error.html", message="You must fill all the fields")
+            return render_template("error.html", message="You must fill all the information")
 
         """get username and password"""
         username = request.form.get("username")
@@ -100,7 +100,7 @@ def book(isbn):
     if request.method == "POST":
         check_reviews = Reviews.query.filter_by(reviews_isbn=isbn,reviews_username=current_user).first()
         if check_reviews:
-            return render_template("error.html", message="You have already submitted a review for this book.")
+            return render_template("error2.html", message="You have already submitted a review for this book.")
         else:
             comment = request.form.get("comment")
             rating = request.form.get("rating")
