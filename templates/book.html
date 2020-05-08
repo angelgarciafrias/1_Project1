@@ -32,10 +32,10 @@
         {% endfor %}
     </ul>
     
-    <h3>External reviews (Goodread)</h3>
+    <h3>External details from Goodread</h3>
     <ul>
-        <li> Review 1 </li>
-        <li> Review 2 </li>
+        <li> Number of reviews: {{ reviews_count }} </li>
+        <li> Average rating: {{ average_rating }} </li>
     </ul>
 
     <h3>Submit your own review</h3>
@@ -46,7 +46,6 @@
         <button>Submit</button>
     </form>
 
-    <a href="{{ url_for('home') }}"> Home</a>
     <a href="{{ url_for('api') }}"> Generate API</a>
     <a href="{{ url_for('index') }}"> Logout</a>
 
