@@ -3,7 +3,7 @@ cd 2_Project1/
 touch terminal.txt
 
 git add -A #(update all files)
-git commit -m "Reviews done" #(submit changes)
+git commit -m "API done" #(submit changes)
 git push #(upload changes)
 
 pip install -r requirements.txt
