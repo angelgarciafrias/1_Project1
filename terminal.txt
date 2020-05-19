@@ -8,6 +8,7 @@ git push #(upload changes)
 
 pip install -r requirements.txt
 
+---------------------------------------------------------------------------------------------------------
 export FLASK_APP=application.py
 export FLASK_DEBUG=1
 set DATABASE_URL="postgres://ukiqyxpjytmnqk:752de8d60c9db6736c5d9d6a7972a70228fad45de4dc1b466833f93108bcd018@ec2-79-125-26-232.eu-west-1.compute.amazonaws.com:5432/d23cjhe2n1foda"
