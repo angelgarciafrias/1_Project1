@@ -1,5 +1,5 @@
-git clone https://github.com/angelgarciafrias/2_Project1.git
-cd 2_Project1/
+git clone https://github.com/angelgarciafrias/1_Project1.git
+cd 1_Project1/
 touch terminal.txt
 
 git add -A #(update all files)
